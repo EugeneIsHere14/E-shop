@@ -1,0 +1,13 @@
+*.doc
+*.docx
+*.iml
+*.class
+.idea/
+.settings/
+.gradle/
+build/
+out/
+.classpath
+.project
+target/
+PreproductionProjectKoshevyi/target/
