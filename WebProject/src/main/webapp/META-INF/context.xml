@@ -1,0 +1,16 @@
+<Context path="src/main/webapp/META-INF/context.xml">
+    <Resource name="jdbc/SHOP"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxActive="100" maxIdle="30" maxWait="10000"
+              username="root" password="root"
+              driverClassName="com.mysql.jdbc.Driver"
+              defaultAutoCommit="false"
+              defaultTransactionIsolation="READ_COMMITTED"
+              url="jdbc:mysql://localhost:3306/shop?useSSL=true"
+              factory="org.apache.commons.dbcp.BasicDataSourceFactory"/>
+
+    <!--<ResourceLink name="jdbc/SHOP"-->
+                  <!--global="jdbc/SHOP"-->
+                  <!--type="javax.sql.DataSource" />-->
+</Context>
