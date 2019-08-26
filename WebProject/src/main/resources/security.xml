@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<security>
+    <constraint>
+        <role>1</role>
+        <url-pattern>adminPage</url-pattern>
+    </constraint>
+    <constraint>
+        <role>1</role>
+        <role>2</role>
+        <url-pattern>order</url-pattern>
+    </constraint>
+</security>

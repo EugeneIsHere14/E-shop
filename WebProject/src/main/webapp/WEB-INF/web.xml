@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>E-Shop</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>CaptchaStore</param-name>
+        <param-value>field</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>CaptchaExpireTime</param-name>
+        <param-value>30000</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>LocalisationCookieLifespan</param-name>
+        <param-value>300</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>DefaultPageItemsNum</param-name>
+        <param-value>3</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>SecurityFile</param-name>
+        <param-value>src/main/resources/security.xml</param-value>
+    </context-param>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/illegalAccess</location>
+    </error-page>
+
+    <filter>
+        <filter-name>NoCacheFilter</filter-name>
+        <filter-class>com.epam.preproduction.koshevyi.filter.NoCacheFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>NoCacheFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.epam.preproduction.koshevyi.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>com.epam.preproduction.koshevyi.filter.SecurityFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/order</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/orderHistory</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/adminPage</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>LocaleFilter</filter-name>
+        <filter-class>com.epam.preproduction.koshevyi.filter.LocaleFilter</filter-class>
+        <init-param>
+            <param-name>DefaultLocale</param-name>
+            <param-value>en</param-value>
+        </init-param>
+        <init-param>
+            <param-name>SupportLocales</param-name>
+            <param-value>ru,en</param-value>
+        </init-param>
+        <init-param>
+            <param-name>LocaleHolder</param-name>
+            <param-value>session</param-value>
+            <!--<param-value>cookie</param-value>-->
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>GZipFilter</filter-name>
+        <filter-class>com.epam.preproduction.koshevyi.filter.GZipFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>GZipFilter</filter-name>
+        <url-pattern>/order</url-pattern>
+        <url-pattern>/orderHistory</url-pattern>
+        <url-pattern>/adminPage</url-pattern>
+        <url-pattern>/products</url-pattern>
+        <url-pattern>/cart</url-pattern>
+        <url-pattern>/index.jsp</url-pattern>
+        <url-pattern>/registration</url-pattern>
+    </filter-mapping>
+</web-app>
